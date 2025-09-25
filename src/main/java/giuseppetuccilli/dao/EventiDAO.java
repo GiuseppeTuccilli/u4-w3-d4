@@ -1,9 +1,12 @@
 package giuseppetuccilli.dao;
 
 import giuseppetuccilli.entities.Evento;
+import giuseppetuccilli.entities.Partita;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.TypedQuery;
 
+import java.util.List;
 import java.util.UUID;
 
 public class EventiDAO {
@@ -37,5 +40,10 @@ public class EventiDAO {
         ent.remove(found);
         tr.commit();
         System.out.println("evento rimosso");
+    }
+
+    public List<Partita> getPartVinteCasa() {
+        TypedQuery query = ent.createQuery("SELECT p FROM Partita p WHERE p.squadraVincente = p.squadraCasa", Partita.class);
+        return query.getResultList();
     }
 }
