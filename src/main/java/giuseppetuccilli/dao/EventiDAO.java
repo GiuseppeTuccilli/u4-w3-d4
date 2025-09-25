@@ -1,7 +1,9 @@
 package giuseppetuccilli.dao;
 
+import giuseppetuccilli.entities.Concerto;
 import giuseppetuccilli.entities.Evento;
 import giuseppetuccilli.entities.Partita;
+import giuseppetuccilli.enums.Genere;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;
@@ -44,6 +46,12 @@ public class EventiDAO {
 
     public List<Partita> getPartVinteCasa() {
         TypedQuery query = ent.createQuery("SELECT p FROM Partita p WHERE p.squadraVincente = p.squadraCasa", Partita.class);
+        return query.getResultList();
+    }
+
+    public List<Concerto> getConcPerGener(Genere gen) {
+        TypedQuery query = ent.createQuery("SELECT c FROM Concerto c WHERE c.genere = :genere", Concerto.class);
+        query.setParameter("genere", gen);
         return query.getResultList();
     }
 }

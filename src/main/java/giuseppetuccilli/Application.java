@@ -4,11 +4,9 @@ import giuseppetuccilli.dao.EventiDAO;
 import giuseppetuccilli.dao.LoactionsDAO;
 import giuseppetuccilli.dao.PartecipazioniDao;
 import giuseppetuccilli.dao.PersoneDAO;
-import giuseppetuccilli.entities.Gara;
-import giuseppetuccilli.entities.Location;
-import giuseppetuccilli.entities.Partita;
-import giuseppetuccilli.entities.Persona;
+import giuseppetuccilli.entities.*;
 import giuseppetuccilli.enums.EventType;
+import giuseppetuccilli.enums.Genere;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -46,8 +44,11 @@ public class Application {
 
         Partita par1 = new Partita("titoloPart", d2, "kkjhkjh", EventType.PUBBLICO, 25, locFromDb, "inter", "milan", 2, 1);
         //ed.save(par1);
+        Concerto conc1 = new Concerto("totlo3", d, "lkjlkj", EventType.PUBBLICO, 25, locFromDb, Genere.ROCK, true);
+        ed.save(conc1);
 
         System.out.println(ed.getPartVinteCasa());
+        System.out.println(ed.getConcPerGener(Genere.ROCK));
 
         em.close();
         emf.close();
