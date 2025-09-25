@@ -88,6 +88,10 @@ public class Persona {
         this.listaPartecipazioni = listaPartecipazioni;
     }
 
+    public List<Gara> getGare() {
+        return gare;
+    }
+
     @Override
     public String toString() {
         return "Persona{" +

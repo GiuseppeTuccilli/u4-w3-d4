@@ -83,4 +83,6 @@ public class EventiDAO {
         query.setParameter("nomeVin", vincitore.getNome());
         return query.getResultList();
     }
+
+   
 }

@@ -65,6 +65,8 @@ public class Application {
         System.out.println("fuori casa:" + ed.getPartiteVinTrasferta());
         System.out.println(ed.getConcPerGener(Genere.ROCK));
         System.out.println("vincitore: " + ed.getGaraPerVincitore(atFromDb));
+        Persona perFromDb = pd.getById("ebf91920-7dab-4686-9aa9-fbf92482b7b6");
+        System.out.println("gare: " + perFromDb.getGare());
 
         em.close();
         emf.close();
