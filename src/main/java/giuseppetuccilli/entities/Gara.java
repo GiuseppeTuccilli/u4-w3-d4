@@ -14,8 +14,8 @@ public class Gara extends Evento {
     @ManyToMany
     @JoinTable(
             name = "atleti_gare",
-            joinColumns = @JoinColumn(name = "gara_id"),
-            inverseJoinColumns = @JoinColumn(name = "persona_id")
+            joinColumns = @JoinColumn(name = "gara_id", nullable = false),
+            inverseJoinColumns = @JoinColumn(name = "persona_id", nullable = false)
     )
     private List<Persona> partecipanti;
 

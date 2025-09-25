@@ -10,6 +10,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "concerti")
 public class Concerto extends Evento {
+
     private Genere genere;
     private boolean inStreaming;
 

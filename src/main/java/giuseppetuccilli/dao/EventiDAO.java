@@ -1,8 +1,6 @@
 package giuseppetuccilli.dao;
 
-import giuseppetuccilli.entities.Concerto;
-import giuseppetuccilli.entities.Evento;
-import giuseppetuccilli.entities.Partita;
+import giuseppetuccilli.entities.*;
 import giuseppetuccilli.enums.Genere;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
@@ -44,6 +42,15 @@ public class EventiDAO {
         System.out.println("evento rimosso");
     }
 
+    public void aggPartecipanti(Gara gara, List<Persona> persone) {
+        EntityTransaction tr = ent.getTransaction();
+        tr.begin();
+        gara.setPartecipanti(persone);
+        ent.merge(gara);
+        tr.commit();
+
+    }
+
     public List<Partita> getPartVinteCasa() {
         TypedQuery<Partita> query = ent.createQuery("SELECT p FROM Partita p WHERE p.squadraVincente = p.squadraCasa", Partita.class);
         return query.getResultList();
@@ -58,6 +65,16 @@ public class EventiDAO {
     public List<Concerto> getConcStreaming(boolean isStr) {
         TypedQuery<Concerto> query = ent.createQuery("SELECT c FROM Concerto c WHERE c.inStreaming = :isStr", Concerto.class);
         query.setParameter("isStr", isStr);
+        return query.getResultList();
+    }
+
+    public List<Partita> getPartiteVinTrasferta() {
+        TypedQuery<Partita> query = ent.createNamedQuery("partVinTrasferta", Partita.class);
+        return query.getResultList();
+    }
+
+    public List<Partita> getPareggiate() {
+        TypedQuery<Partita> query = ent.createQuery("SELECT p FROM Partita p WHERE p.golSqCasa = p.golSqOspite", Partita.class);
         return query.getResultList();
     }
 }

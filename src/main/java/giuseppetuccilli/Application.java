@@ -12,6 +12,7 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Application {
 
@@ -45,9 +46,23 @@ public class Application {
         Partita par1 = new Partita("titoloPart", d2, "kkjhkjh", EventType.PUBBLICO, 25, locFromDb, "inter", "milan", 2, 1);
         //ed.save(par1);
         Concerto conc1 = new Concerto("totlo3", d, "lkjlkj", EventType.PUBBLICO, 25, locFromDb, Genere.ROCK, true);
-        ed.save(conc1);
+        // ed.save(conc1);
+        Partita par2 = new Partita("titoloPart2", d2, "hjghj", EventType.PUBBLICO, 25, locFromDb, "juve", "lecce", 1, 3);
+        // ed.save(par2);
+
+        ArrayList<Persona> listaPart = new ArrayList<>();
+        Persona p2 = new Persona("tizio", "pluto", "ghghjhgj", d, "M");
+        Persona p3 = new Persona("caio", "fghgfh", "ghjghj", d, "M");
+        // pd.save(p2);
+        //pd.save(p3);
+        listaPart.add(pd.getById("7956fbe5-c380-4185-bd6b-599cde916f8d"));
+        listaPart.add(pd.getById("d8e8ea4d-dcd8-46d7-abaa-dc373c2c5da0"));
+        listaPart.add(pd.getById("ebf91920-7dab-4686-9aa9-fbf92482b7b6"));
+
+        ed.aggPartecipanti(gara1, listaPart);
 
         System.out.println(ed.getPartVinteCasa());
+        System.out.println("fuori casa:" + ed.getPartiteVinTrasferta());
         System.out.println(ed.getConcPerGener(Genere.ROCK));
 
         em.close();
