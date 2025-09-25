@@ -59,11 +59,12 @@ public class Application {
         listaPart.add(pd.getById("d8e8ea4d-dcd8-46d7-abaa-dc373c2c5da0"));
         listaPart.add(pd.getById("ebf91920-7dab-4686-9aa9-fbf92482b7b6"));
 
-        ed.aggPartecipanti(gara1, listaPart);
+        //ed.aggPartecipanti(gara1, listaPart);
 
         System.out.println(ed.getPartVinteCasa());
         System.out.println("fuori casa:" + ed.getPartiteVinTrasferta());
         System.out.println(ed.getConcPerGener(Genere.ROCK));
+        System.out.println("vincitore: " + ed.getGaraPerVincitore(atFromDb));
 
         em.close();
         emf.close();
