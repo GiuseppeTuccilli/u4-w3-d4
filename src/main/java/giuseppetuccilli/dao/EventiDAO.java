@@ -45,13 +45,19 @@ public class EventiDAO {
     }
 
     public List<Partita> getPartVinteCasa() {
-        TypedQuery query = ent.createQuery("SELECT p FROM Partita p WHERE p.squadraVincente = p.squadraCasa", Partita.class);
+        TypedQuery<Partita> query = ent.createQuery("SELECT p FROM Partita p WHERE p.squadraVincente = p.squadraCasa", Partita.class);
         return query.getResultList();
     }
 
     public List<Concerto> getConcPerGener(Genere gen) {
-        TypedQuery query = ent.createQuery("SELECT c FROM Concerto c WHERE c.genere = :genere", Concerto.class);
+        TypedQuery<Concerto> query = ent.createQuery("SELECT c FROM Concerto c WHERE c.genere = :genere", Concerto.class);
         query.setParameter("genere", gen);
+        return query.getResultList();
+    }
+
+    public List<Concerto> getConcStreaming(boolean isStr) {
+        TypedQuery<Concerto> query = ent.createQuery("SELECT c FROM Concerto c WHERE c.inStreaming = :isStr", Concerto.class);
+        query.setParameter("isStr", isStr);
         return query.getResultList();
     }
 }
