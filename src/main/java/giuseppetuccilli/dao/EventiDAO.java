@@ -77,4 +77,10 @@ public class EventiDAO {
         TypedQuery<Partita> query = ent.createQuery("SELECT p FROM Partita p WHERE p.golSqCasa = p.golSqOspite", Partita.class);
         return query.getResultList();
     }
+
+    public List<Gara> getGaraPerVincitore(Persona vincitore) {
+        TypedQuery<Gara> query = ent.createQuery("SELECT g FROM Gara g WHERE g.vincitore = :nomeVin", Gara.class);
+        query.setParameter("nomeVin", vincitore.getNome());
+        return query.getResultList();
+    }
 }
