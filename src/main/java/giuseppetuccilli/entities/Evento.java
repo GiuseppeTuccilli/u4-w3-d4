@@ -8,23 +8,24 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "eventi")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Evento {
     @Id
     @GeneratedValue
     @Column(name = "evento_id")
-    private UUID id;
-    private String titolo;
-    private LocalDate dataEvento;
-    private String descrizione;
+    protected UUID id;
+    protected String titolo;
+    protected LocalDate dataEvento;
+    protected String descrizione;
 
     @Enumerated(EnumType.STRING)
-    private EventType tipoEvento;
+    protected EventType tipoEvento;
 
-    private int maxPartecipanti;
+    protected int maxPartecipanti;
 
     @ManyToOne
     @JoinColumn(name = "location_id")
-    private Location location;
+    protected Location location;
 
     public Evento() {
     }

@@ -6,6 +6,9 @@
         <class>giuseppetuccilli.entities.Persona</class>
         <class>giuseppetuccilli.entities.Partecipazioni</class>
         <class>giuseppetuccilli.entities.Location</class>
+        <class>giuseppetuccilli.entities.Partita</class>
+        <class>giuseppetuccilli.entities.Concerto</class>
+        <class>giuseppetuccilli.entities.Gara</class>
 
 
         <properties>
